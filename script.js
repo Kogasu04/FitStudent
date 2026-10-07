@@ -96,7 +96,7 @@ function updateCompletedCount() {
     }
 }
 
-let currentWater = 0;
+let currentWater = 1250;
 const maxWater = 2000;
 const step = 250;
 
