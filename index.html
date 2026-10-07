@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITСтудент - Интерактивный макет</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+    <header>
+        <div class="logo-area">
+            <div class="logo">FIT<span>Студент</span></div>
+            <div class="badge-free">Бесплатно</div>
+        </div>
+        <div class="profile">
+            <div class="avatar">🏋️‍♂️</div>
+            <div class="profile-info">
+                <span class="profile-name">Максим</span>
+                <span class="profile-role">Тренер</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon">🏃</div>
+            <div>
+                <div class="stat-value">12</div>
+                <div class="stat-label">Тренировок за месяц</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">💧</div>
+            <div>
+                <div class="stat-value">1.2 л</div>
+                <div class="stat-label">Средне за день</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">🔥</div>
+            <div>
+                <div class="stat-value">87%</div>
+                <div class="stat-label">Прогресс цели</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">⭐</div>
+            <div>
+                <div class="stat-value">4.8</div>
+                <div class="stat-label">Рейтинг</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="left-col">
+            <div class="section-title">Моя цель сегодня</div>
+            <div class="goals-grid">
+                <div class="goal-card active" data-goal="back" onclick="selectGoal(this)">
+                    <div class="goal-icon">🧘</div>
+                    <div class="goal-text">
+                        <h4>Спина / Офис</h4>
+                        <p>Размять шею и поясницу</p>
+                    </div>
+                </div>
+                <div class="goal-card" data-goal="lose" onclick="selectGoal(this)">
+                    <div class="goal-icon">⚖️</div>
+                    <div class="goal-text">
+                        <h4>Похудеть</h4>
+                        <p>Активные кардио-упражнения</p>
+                    </div>
+                </div>
+                <div class="goal-card" data-goal="gain" onclick="selectGoal(this)">
+                    <div class="goal-icon">💪</div>
+                    <div class="goal-text">
+                        <h4>Набрать массу</h4>
+                        <p>Силовые тренировки</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workout-header">
+                <h2>Сегодняшняя тренировка</h2>
+                <div class="workout-meta">
+                    <span id="exercises-count">4 упражнения</span>
+                    <span id="completed-count">0 выполнено</span>
+                </div>
+            </div>
+
+            <ul class="workout-list" id="workout-list"></ul>
+        </div>
+
+        <div class="right-col">
+            <div class="water-widget">
+                <div class="water-header">
+                    <h3>Вода сегодня</h3>
+                    <span class="water-count" id="water-text">1 250 / 2 000 мл</span>
+                </div>
+                <div class="glass-container">
+                    <div class="water-fill" id="water-fill"></div>
+                </div>
+                <button class="btn-water" id="btn-water" onclick="drinkWater()">Выпить стакан (250 мл)</button>
+            </div>
+
+            <div class="advice-box">
+                <strong>Совет дня от Максима</strong>
+                «Не надейся за час до пары. Выпей стакан воды после разминки - это запускает обмен веществ и помогает сохранить энергию на весь день!»
+                <span class="advice-author">- Тренер Максим, студенческий спортклуб</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="toast-container" class="toast-container"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
