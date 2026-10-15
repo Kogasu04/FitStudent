@@ -1,0 +1,14 @@
+{
+  "name": "FITСтудент — фитнес-помощник",
+  "short_name": "FITСтудент",
+  "description": "Бесплатный фитнес-помощник без регистрации и внешних зависимостей.",
+  "lang": "ru",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f6fb",
+  "theme_color": "#326af5",
+  "icons": [
+    {"src":"icons/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}

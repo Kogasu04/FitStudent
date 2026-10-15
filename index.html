@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#326af5">
+  <meta name="description"
+    content="FITСтудент — фитнес-помощник для студентов. Тренировки, вода и прогресс в одном месте.">
+  <title>FITСтудент — твой фитнес-помощник</title>
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app-container">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="FITСтудент — на главную">
+        <span class="brand-mark" id="brand-logo" aria-hidden="true">
+          <img id="brand-logo-img" src="icons/icon.svg" alt="" width="44" height="44">
+          <span id="brand-logo-fallback" class="brand-logo-fallback">✦</span>
+        </span>
+        <span>
+          <span class="brand-name" id="brand-name-text">FIT<span id="brand-name-accent">Студент</span></span>
+          <small data-i18n="brandTagline">Тренировки · вода · прогресс</small>
+        </span>
+      </a>
+      <div class="header-actions">
+        <span id="connection-status" class="connection-status"><span class="status-dot"></span><span
+            data-i18n="online">Готов к работе</span></span>
+        <label class="language-label" for="language-select" data-i18n="language">Язык</label>
+        <select id="language-select" aria-label="Language">
+          <option value="ru">RU</option>
+          <option value="en">EN</option>
+        </select>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="welcome-row reveal" style="--reveal-delay:0ms">
+        <div>
+          <p class="eyebrow" data-i18n="dailyTitle">ТВОЙ ПЛАН НА СЕГОДНЯ</p>
+          <h1 data-i18n="welcome">Небольшой шаг — уже прогресс.</h1>
+          <p class="welcome-copy" data-i18n="welcomeCopy">Выбери программу, отмечай упражнения и следи за водой. Данные
+            сохраняются на этом устройстве.</p>
+        </div>
+        <div class="date-chip"><span aria-hidden="true">📅</span><span id="today-date"></span></div>
+      </section>
+
+      <section class="stats-grid" aria-label="Статистика">
+        <article class="stat-card reveal" style="--reveal-delay:80ms"><span class="stat-icon blue"
+            aria-hidden="true">✓</span>
+          <div>
+            <div class="stat-value" id="stat-workouts">0</div>
+            <div class="stat-label" data-i18n="statWorkouts">Завершено тренировок в этом месяце</div>
+          </div>
+        </article>
+        <article class="stat-card reveal" style="--reveal-delay:160ms"><span class="stat-icon aqua"
+            aria-hidden="true">💧</span>
+          <div>
+            <div class="stat-value" id="stat-water">0 мл</div>
+            <div class="stat-label" data-i18n="statWater">Выпито воды сегодня</div>
+          </div>
+        </article>
+        <article class="stat-card reveal" style="--reveal-delay:240ms"><span class="stat-icon violet"
+            aria-hidden="true">◔</span>
+          <div>
+            <div class="stat-value" id="stat-progress">0%</div>
+            <div class="stat-label" data-i18n="statProgress">Выполнено упражнений сегодня</div>
+          </div>
+        </article>
+        <article class="stat-card reveal" style="--reveal-delay:320ms"><span class="stat-icon orange"
+            aria-hidden="true">⚡</span>
+          <div>
+            <div class="stat-value" id="stat-streak">0</div>
+            <div class="stat-label" data-i18n="statStreak">Дней подряд с тренировкой</div>
+          </div>
+        </article>
+      </section>
+
+      <div class="main-content">
+        <section class="left-col reveal" style="--reveal-delay:400ms">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow" data-i18n="chooseEyebrow">ПРОГРАММА</p>
+              <h2 data-i18n="chooseTitle">Какова твоя цель?</h2>
+            </div>
+          </div>
+          <div class="goals-grid" role="group" aria-label="Workout program">
+            <button type="button" class="goal-card active" data-goal="back" aria-pressed="true"><span class="goal-icon"
+                aria-hidden="true">🧘</span><span class="goal-text"><strong data-i18n="goalBack">Спина и
+                  офис</strong><span data-i18n="goalBackDesc">Мягкая разминка после учёбы</span></span><span
+                class="goal-arrow" aria-hidden="true">↗</span></button>
+            <button type="button" class="goal-card" data-goal="cardio" aria-pressed="false"><span class="goal-icon"
+                aria-hidden="true">🏃</span><span class="goal-text"><strong data-i18n="goalCardio">Кардио и
+                  тонус</strong><span data-i18n="goalCardioDesc">Двигайся в комфортном темпе</span></span><span
+                class="goal-arrow" aria-hidden="true">↗</span></button>
+            <button type="button" class="goal-card" data-goal="strength" aria-pressed="false"><span class="goal-icon"
+                aria-hidden="true">💪</span><span class="goal-text"><strong data-i18n="goalStrength">Сила и
+                  мышцы</strong><span data-i18n="goalStrengthDesc">Базовые силовые упражнения</span></span><span
+                class="goal-arrow" aria-hidden="true">↗</span></button>
+          </div>
+
+          <div class="workout-header">
+            <div>
+              <p class="eyebrow" data-i18n="todayWorkout">СЕГОДНЯ</p>
+              <h2 id="workout-title">Тренировка для спины</h2>
+            </div>
+            <div class="workout-meta"><span id="exercises-count">4 упражнения</span><span
+                class="meta-divider">·</span><span id="completed-count">0 из 4</span></div>
+          </div>
+          <p class="daily-selection-note" data-i18n="dailySelectionNote">Каждый день выбираются 4 упражнения из
+            каталога. Завтра набор обновится.</p>
+          <div class="progress-track" aria-label="Workout progress">
+            <div id="workout-progress" class="progress-bar"></div>
+          </div>
+          <ul class="workout-list" id="workout-list" aria-label="Exercises"></ul>
+          <div class="workout-footer">
+            <p data-i18n="checkHint">Отмечай упражнение после выполнения. Отметки сохраняются автоматически.</p><button
+              type="button" class="text-button" id="reset-workout" data-i18n="resetWorkout">Сбросить отметки</button>
+          </div>
+        </section>
+
+        <aside class="right-col reveal" style="--reveal-delay:500ms">
+          <section class="water-widget">
+            <div class="widget-title-row">
+              <div>
+                <p class="eyebrow" data-i18n="waterEyebrow">ПОЛЕЗНАЯ ПРИВЫЧКА</p>
+                <h2 data-i18n="waterTitle">Вода сегодня</h2>
+              </div><span class="water-emoji" aria-hidden="true">💧</span>
+            </div>
+            <div class="water-glass-stage" aria-hidden="true">
+              <svg class="water-glass-svg" viewBox="0 0 180 175" role="img" aria-label="Стакан с водой"
+                preserveAspectRatio="xMidYMid meet">
+                <defs>
+                  <clipPath id="glass-clip">
+                    <path d="M43 22 L137 22 L126 145 Q125 153 116 153 L64 153 Q55 153 54 145 Z" />
+                  </clipPath>
+                  <linearGradient id="glass-water" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#8edcff" />
+                    <stop offset="1" stop-color="#3988f5" />
+                  </linearGradient>
+                </defs>
+                <ellipse cx="90" cy="157" rx="49" ry="6" fill="#9ab8ed" opacity=".22" />
+                <g clip-path="url(#glass-clip)">
+                  <rect id="water-glass-fill" x="48" y="153" width="84" height="0" rx="4" fill="url(#glass-water)" />
+                  <g id="water-wave-group" class="water-wave-group">
+                    <path id="water-wave" class="water-wave" d="M0 0 Q21 -4 42 0 T84 0 T126 0 T168 0 V10 H0 Z"
+                      fill="#bfe8ff" opacity=".65" />
+                  </g>
+                  <g id="water-bubbles" class="water-bubbles"></g>
+                </g>
+                <path d="M43 22 L137 22 L126 145 Q125 153 116 153 L64 153 Q55 153 54 145 Z" fill="#fff"
+                  fill-opacity=".18" stroke="#5c8fe0" stroke-width="4" stroke-linejoin="round" />
+                <path d="M50 31 L59 139" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".8" />
+                <path d="M135 31 L125 139" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity=".75" />
+                <path d="M50 22 Q90 30 130 22" fill="none" stroke="#5c8fe0" stroke-width="4" stroke-linecap="round" />
+                <path d="M73 12 C69 5 78 2 76 0 M105 12 C101 5 110 2 108 0" fill="none" stroke="#6dbcf5"
+                  stroke-width="3" stroke-linecap="round" opacity=".8" />
+              </svg>
+              <span class="glass-caption" data-i18n="glassCaption">Твой стакан</span>
+            </div>
+            <div class="water-summary"><strong id="water-text">0 / 2 000 мл</strong><span id="water-percent">0%</span>
+            </div>
+            <div class="water-track" role="progressbar" aria-label="Water goal" aria-valuemin="0" aria-valuemax="2000"
+              aria-valuenow="0" id="water-progress">
+              <div class="water-fill" id="water-fill"></div>
+            </div>
+            <p class="water-note" data-i18n="waterNote">Условная цель — 2 литра. Потребность зависит от активности,
+              погоды и состояния здоровья.</p>
+            <button class="btn-water" id="btn-water" type="button">+ 250 мл</button>
+            <div class="water-secondary"><button type="button" id="undo-water" class="text-button"
+                data-i18n="undoWater">Отменить последний стакан</button><button type="button" id="reset-water"
+                class="text-button" data-i18n="resetWater">Сбросить</button></div>
+          </section>
+
+          <section class="advice-box">
+            <div class="advice-icon" aria-hidden="true">✦</div>
+            <p class="eyebrow" data-i18n="tipEyebrow">НЕБОЛЬШОЙ СОВЕТ</p>
+            <h3 id="tip-title">Начни с малого</h3>
+            <p id="tip-text">Не нужно делать всё идеально. Регулярность важнее рекордов — выбирай комфортную нагрузку и
+              отдыхай при необходимости.</p>
+            <p class="advice-disclaimer" data-i18n="disclaimer">Подсказки носят общий информационный характер и не
+              заменяют рекомендации специалиста.</p>
+          </section>
+
+          <section class="privacy-note"><span aria-hidden="true">🔒</span>
+            <div><strong data-i18n="privacyTitle">Твои данные — твои</strong>
+              <p data-i18n="privacyCopy">Всё хранится локально в браузере. Аккаунт не нужен. Очистка данных браузера
+                может удалить прогресс.</p>
+            </div>
+          </section>
+        </aside>
+      </div>
+      <footer class="footer"><span>FITСтудент © <span id="year"></span></span><button type="button" class="text-button"
+          id="clear-data" data-i18n="clearData">Удалить все мои данные</button></footer>
+    </main>
+  </div>
+  <div id="toast-container" class="toast-container" role="status" aria-live="polite"></div>
+  <script src="brand-config.js" defer></script>
+  <script src="exercise-bank.js" defer></script>
+  <script src="exercise-illustrations.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+
+</html>
