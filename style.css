@@ -152,26 +152,6 @@ a:focus-visible {
     gap: 10px
 }
 
-.connection-status {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    color: var(--muted);
-    font-size: 11px;
-    margin-right: 10px
-}
-
-.status-dot {
-    width: 7px;
-    height: 7px;
-    background: #20b486;
-    border-radius: 50%
-}
-
-.connection-status.offline .status-dot {
-    background: #e6a23c
-}
-
 .language-label {
     color: var(--muted);
     font-size: 12px
@@ -801,30 +781,6 @@ a:focus-visible {
     margin-top: 12px !important;
     color: #9a8b75 !important;
     font-size: 9px !important
-}
-
-.privacy-note {
-    display: flex;
-    gap: 11px;
-    padding: 15px;
-    border: 1px solid #e8edf5;
-    border-radius: 15px;
-    background: #fbfcfe
-}
-
-.privacy-note>span {
-    font-size: 18px
-}
-
-.privacy-note strong {
-    font-size: 11px
-}
-
-.privacy-note p {
-    margin: 4px 0 0;
-    font-size: 10px;
-    color: var(--muted);
-    line-height: 1.55
 }
 
 .footer {
@@ -1607,12 +1563,6 @@ a:focus-visible {
         justify-content: flex-end
     }
 
-    .connection-status {
-        width: 100%;
-        justify-content: flex-end;
-        margin: 0
-    }
-
     .language-label {
         display: none
     }
@@ -1871,4 +1821,765 @@ a:focus-visible {
     .water-fill::after {
         animation: none !important
     }
+}
+
+/* ===== Уровень, подходы, таймер ===== */
+.workout-item {
+    grid-template-columns: 58px minmax(0, 1fr) 26px;
+    align-items: start
+}
+
+.workout-item.no-anim {
+    animation: none
+}
+
+.workout-item .check-button {
+    margin-top: 2px
+}
+
+.exercise-number {
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+    padding: 0;
+    overflow: hidden;
+    background: #f2f5fb
+}
+
+.exercise-thumb {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain
+}
+
+.workout-item.done .exercise-thumb {
+    opacity: .55
+}
+
+.exercise-focus {
+    display: inline-block;
+    margin-top: 4px;
+    padding: 1px 8px;
+    border-radius: 999px;
+    background: var(--blue-pale);
+    color: var(--blue-dark);
+    font-size: 10px;
+    font-weight: 700
+}
+
+.sets-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin-top: 9px
+}
+
+.set-chip {
+    min-width: 32px;
+    height: 30px;
+    padding: 0 8px;
+    border-radius: 10px;
+    border: 1.5px solid #d5dbe7;
+    background: #fff;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 750;
+    transition: background .2s, border-color .2s, color .2s, transform .2s
+}
+
+.set-chip:hover {
+    border-color: #9db8ff;
+    color: var(--blue)
+}
+
+.set-chip:active {
+    transform: scale(.94)
+}
+
+.set-chip.done {
+    background: var(--green);
+    border-color: var(--green);
+    color: #fff
+}
+
+.timer-start {
+    height: 30px;
+    padding: 0 12px;
+    border-radius: 10px;
+    border: 1.5px solid var(--blue);
+    background: var(--blue-pale);
+    color: var(--blue-dark);
+    font-size: 12px;
+    font-weight: 750;
+    margin-left: 4px
+}
+
+.timer-start:hover:not(:disabled) {
+    background: #dfe9ff
+}
+
+.timer-start.running {
+    background: var(--blue);
+    color: #fff
+}
+
+.timer-start:disabled {
+    opacity: .45;
+    cursor: default
+}
+
+.level-note {
+    margin: -4px 0 12px;
+    color: var(--blue-dark);
+    font-size: 11px;
+    font-weight: 700
+}
+
+.header-actions select#level-select {
+    min-width: 128px
+}
+
+.hint-media {
+    display: grid;
+    place-items: center;
+    margin-bottom: 14px;
+    padding: 10px;
+    border-radius: 18px;
+    background: #f5f8ff
+}
+
+.hint-gif {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 1;
+    object-fit: contain;
+    border-radius: 16px
+}
+
+.timer-bar {
+    position: fixed;
+    left: 50%;
+    bottom: 18px;
+    z-index: 70;
+    width: min(440px, calc(100vw - 24px));
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px 15px;
+    border-radius: 18px;
+    background: #172033;
+    color: #fff;
+    box-shadow: 0 18px 44px rgba(20, 33, 66, .35);
+    overflow: hidden;
+    transform: translate(-50%, 140%);
+    transition: transform .35s cubic-bezier(.22, 1, .36, 1)
+}
+
+.timer-bar.show {
+    transform: translate(-50%, 0)
+}
+
+.timer-info {
+    display: grid;
+    min-width: 0
+}
+
+.timer-kind {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #8edcff
+}
+
+.timer-bar[data-kind="work"] .timer-kind {
+    color: #7be3b9
+}
+
+.timer-name {
+    font-size: 12px;
+    font-weight: 650;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.timer-clock {
+    font-size: 26px;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -.5px
+}
+
+.timer-skip {
+    border: 1px solid rgba(255, 255, 255, .35);
+    background: transparent;
+    color: #fff;
+    border-radius: 10px;
+    padding: 7px 12px;
+    font-size: 12px;
+    font-weight: 700
+}
+
+.timer-skip:hover {
+    background: rgba(255, 255, 255, .12)
+}
+
+.timer-track {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4px;
+    background: rgba(255, 255, 255, .15)
+}
+
+.timer-fill {
+    height: 100%;
+    width: 0;
+    background: #6dbcf5
+}
+
+.timer-bar[data-kind="work"] .timer-fill {
+    background: #3ecf9a
+}
+
+.level-card-wrap {
+    width: min(480px, 100%)
+}
+
+.level-options {
+    display: grid;
+    gap: 10px
+}
+
+.level-card {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    padding: 14px;
+    border-radius: 16px;
+    border: 1.5px solid var(--line);
+    background: #fff;
+    color: var(--ink);
+    transition: border-color .2s, background .2s, transform .2s
+}
+
+.level-card:hover {
+    border-color: #9db8ff;
+    background: #f7faff;
+    transform: translateY(-1px)
+}
+
+.level-card.active {
+    border-color: var(--blue);
+    background: var(--blue-pale)
+}
+
+.level-card strong {
+    display: block;
+    font-size: 14px
+}
+
+.level-card small {
+    display: block;
+    margin-top: 2px;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.4
+}
+
+.level-emoji {
+    font-size: 26px;
+    text-align: center
+}
+
+@media (max-width: 640px) {
+    .workout-item {
+        grid-template-columns: 48px minmax(0, 1fr) 26px
+    }
+
+    .exercise-number {
+        width: 46px;
+        height: 46px
+    }
+
+    .header-actions select#level-select {
+        min-width: 0
+    }
+
+    .timer-bar {
+        bottom: 10px;
+        padding: 10px 12px 14px;
+        gap: 8px
+    }
+
+    .timer-clock {
+        font-size: 22px
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .timer-bar {
+        transition: none
+    }
+}
+
+
+/* ===== Переключатель темы ===== */
+.theme-toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 54px;
+    height: 28px;
+    padding: 0 7px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1
+}
+
+.theme-icon {
+    position: relative;
+    z-index: 1;
+    transition: color .25s ease
+}
+
+.theme-knob {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--blue-pale);
+    border: 1px solid #c9d8ff;
+    transition: transform .3s cubic-bezier(.34, 1.56, .64, 1), background .25s ease, border-color .25s ease
+}
+
+.theme-toggle .sun {
+    color: var(--blue-dark)
+}
+
+.theme-toggle[aria-checked="true"] .knob,
+.theme-toggle[aria-checked="true"] .theme-knob {
+    transform: translateX(26px)
+}
+
+.theme-toggle[aria-checked="true"] .sun {
+    color: var(--muted)
+}
+
+.theme-toggle[aria-checked="true"] .moon {
+    color: #cfe0ff
+}
+
+/* ===== Тёмная тема ===== */
+:root[data-theme="dark"] {
+    --bg: #0c1220;
+    --card: #151d30;
+    --ink: #e8edf8;
+    --muted: #93a0ba;
+    --blue: #4d82ff;
+    --blue-dark: #9db8ff;
+    --blue-pale: #1d2a4a;
+    --line: #26314a;
+    --green: #22b987;
+    --shadow: 0 14px 40px rgba(0, 0, 0, .35)
+}
+
+[data-theme="dark"] body {
+    background: var(--bg)
+}
+
+[data-theme="dark"] .app-container {
+    border-color: #1f2940
+}
+
+[data-theme="dark"] .topbar {
+    border-bottom-color: #222c44
+}
+
+[data-theme="dark"] .brand-name {
+    color: #dbe6ff
+}
+
+[data-theme="dark"] .header-actions select,
+[data-theme="dark"] .theme-toggle,
+[data-theme="dark"] .goal-card,
+[data-theme="dark"] .check-button,
+[data-theme="dark"] .set-chip,
+[data-theme="dark"] .level-card,
+[data-theme="dark"] .modal-card,
+[data-theme="dark"] .modal-actions button,
+[data-theme="dark"] .toast {
+    background: #1a2440;
+    color: var(--ink)
+}
+
+[data-theme="dark"] .modal-card,
+[data-theme="dark"] .toast {
+    background: #18213a
+}
+
+[data-theme="dark"] .modal-actions button.primary {
+    background: var(--blue);
+    color: #fff
+}
+
+[data-theme="dark"] .modal-actions button.danger {
+    background: #e5484d;
+    color: #fff
+}
+
+[data-theme="dark"] .modal-actions button:hover:not(.primary):not(.danger),
+[data-theme="dark"] .level-card:hover {
+    background: #223056;
+    border-color: #4a64a8
+}
+
+[data-theme="dark"] .check-button {
+    border-color: #3a4766
+}
+
+[data-theme="dark"] .check-button.checked,
+[data-theme="dark"] .set-chip.done {
+    color: #fff
+}
+
+[data-theme="dark"] .check-button.checked {
+    background: var(--blue);
+    border-color: var(--blue)
+}
+
+[data-theme="dark"] .set-chip.done {
+    background: var(--green);
+    border-color: var(--green)
+}
+
+[data-theme="dark"] .set-chip {
+    border-color: #3a4766;
+    color: var(--muted)
+}
+
+[data-theme="dark"] .theme-knob {
+    background: #2b3d6e;
+    border-color: #4a64a8
+}
+
+[data-theme="dark"] .date-chip,
+[data-theme="dark"] .stat-card {
+    background: #1a2440;
+    border-color: #26314a;
+    color: var(--muted)
+}
+
+[data-theme="dark"] .stat-icon.blue {
+    background: #1f2f5c
+}
+
+[data-theme="dark"] .stat-icon.aqua {
+    background: #12394a
+}
+
+[data-theme="dark"] .stat-icon.violet {
+    background: #2d2554
+}
+
+[data-theme="dark"] .stat-icon.orange {
+    background: #44311d
+}
+
+[data-theme="dark"] .goal-card {
+    border-color: #2b3652
+}
+
+[data-theme="dark"] .goal-card:hover {
+    border-color: #4a64a8
+}
+
+[data-theme="dark"] .goal-card.active,
+[data-theme="dark"] .level-card.active {
+    background: #1d2c55;
+    border-color: #5b83f0;
+    box-shadow: inset 0 0 0 1px #3d5bb0, 0 8px 18px rgba(0, 0, 0, .25)
+}
+
+[data-theme="dark"] .goal-arrow,
+[data-theme="dark"] .meta-divider {
+    color: #6f7d99
+}
+
+[data-theme="dark"] .workout-item {
+    border-bottom-color: #222c44
+}
+
+[data-theme="dark"] .exercise-number,
+[data-theme="dark"] .hint-media {
+    background: #e9f0ff
+}
+
+[data-theme="dark"] .workout-item.done .exercise-number {
+    background: #d7f3e8
+}
+
+[data-theme="dark"] .workout-item.done .exercise-name {
+    color: #7b88a3
+}
+
+[data-theme="dark"] .hint-toggle,
+[data-theme="dark"] .exercise-focus,
+[data-theme="dark"] .timer-start {
+    background: #1d2c55;
+    border-color: #36508f;
+    color: #b7ccff
+}
+
+[data-theme="dark"] .hint-toggle:hover,
+[data-theme="dark"] .timer-start:hover:not(:disabled) {
+    background: #263a6f;
+    border-color: #5b83f0
+}
+
+[data-theme="dark"] .timer-start.running {
+    background: var(--blue);
+    color: #fff
+}
+
+[data-theme="dark"] .exercise-modal-icon {
+    background: #1d2c55;
+    color: #b7ccff
+}
+
+[data-theme="dark"] .hint-safety {
+    background: #2e2617;
+    border-color: #4d3f22;
+    color: #e5c58b
+}
+
+[data-theme="dark"] .hint-instruction {
+    color: #c3cde2
+}
+
+[data-theme="dark"] .water-widget {
+    background: linear-gradient(150deg, #17223f, #131c34);
+    border-color: #26355d
+}
+
+[data-theme="dark"] .water-track {
+    background: #243253
+}
+
+[data-theme="dark"] .glass-caption {
+    color: #8fa9de
+}
+
+[data-theme="dark"] .advice-box {
+    background: #241f17;
+    border-color: #3d3322
+}
+
+[data-theme="dark"] .advice-box .eyebrow {
+    color: #e0b36a
+}
+
+[data-theme="dark"] .advice-box>p:not(.eyebrow) {
+    color: #cfc7ba
+}
+
+[data-theme="dark"] .advice-box .advice-disclaimer {
+    border-top-color: #3d3322;
+    color: #a99a82 !important
+}
+
+[data-theme="dark"] .footer {
+    border-top-color: #222c44;
+    color: #7f8ba3
+}
+
+[data-theme="dark"] .footer .text-button {
+    color: #8f9bb3
+}
+
+[data-theme="dark"] .text-button {
+    color: #8fb0ff
+}
+
+[data-theme="dark"] .progress-track {
+    background: #243253
+}
+
+[data-theme="dark"] .modal-backdrop {
+    background: rgba(3, 7, 16, .7)
+}
+
+[data-theme="dark"] .timer-bar {
+    background: #0a0f1d;
+    border: 1px solid #26314a
+}
+
+
+/* ===== «Сложное» и пропуск ===== */
+.hard-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 8px;
+    border-radius: 999px;
+    background: #fff1e2;
+    color: #b45f06;
+    border: 1px solid #f7d3a8;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .02em;
+    white-space: nowrap
+}
+
+.hint-hard {
+    margin: 10px 0 0;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: #fff4e8;
+    border: 1px solid #f7d3a8;
+    color: #8a4b05;
+    font-size: 12.5px;
+    line-height: 1.5
+}
+
+.modal-actions .skip-button {
+    background: transparent;
+    border: 1.5px solid #f0b36b;
+    color: #b45f06
+}
+
+.modal-actions .skip-button:hover {
+    background: #fff4e8
+}
+
+/* ===== Напоминание о перерыве ===== */
+.reminder-box {
+    border: 1px solid var(--line);
+    border-radius: 19px;
+    padding: 18px 20px;
+    background: #fff;
+    margin-bottom: 18px
+}
+
+.reminder-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px
+}
+
+.reminder-head h3 {
+    margin: 2px 0 0;
+    font-size: 16px
+}
+
+.reminder-text {
+    margin: 8px 0 12px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5
+}
+
+.reminder-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--ink);
+    transition: opacity .2s
+}
+
+.reminder-controls.disabled {
+    opacity: .5
+}
+
+.reminder-controls select {
+    height: 30px;
+    padding: 0 8px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--ink);
+    font-size: 12px;
+    font-weight: 700
+}
+
+.reminder-controls .text-button {
+    margin-left: auto
+}
+
+.reminder-status {
+    margin: 10px 0 0;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.5
+}
+
+.reminder-switch {
+    flex: none
+}
+
+.reminder-switch[aria-checked="true"] {
+    background: var(--blue);
+    border-color: var(--blue)
+}
+
+.reminder-switch[aria-checked="true"] .theme-knob {
+    background: #fff;
+    border-color: #fff
+}
+
+[data-theme="dark"] .reminder-box {
+    background: #151d30;
+    border-color: #26314a
+}
+
+[data-theme="dark"] .reminder-controls select {
+    background: #1a2440;
+    border-color: #3a4766;
+    color: var(--ink)
+}
+
+[data-theme="dark"] .hard-badge {
+    background: #3a2a14;
+    border-color: #5c4220;
+    color: #f0b36b
+}
+
+[data-theme="dark"] .hint-hard {
+    background: #2e2617;
+    border-color: #4d3f22;
+    color: #e5c58b
+}
+
+[data-theme="dark"] .modal-actions .skip-button {
+    background: transparent;
+    border-color: #8a6030;
+    color: #f0b36b
+}
+
+[data-theme="dark"] .modal-actions .skip-button:hover {
+    background: #2e2617
+}
+
+.exercise-name-wrap {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    min-width: 0
 }

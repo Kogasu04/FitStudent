@@ -1,26 +1,33 @@
 'use strict';
-const CACHE_NAME = 'fitstudent-cache-v6';
+const CACHE_NAME = 'fitstudent-cache-v9';
 
 const APP_SHELL = [
   './', './index.html', './style.css',
-  './brand-config.js', './exercise-bank.js',
-  './exercise-illustrations.js', './script.js',
+  './brand-config.js', './exercise-bank.js', './script.js',
   './manifest.json', './icons/icon.svg'
 ];
 
-const ILLUSTRATIONS = [
-  '0001','0005','0025','0027','0073','0075',
-  '0100','0101','0102','0103','0104','0105','0109','0111',
-  '0113','0115','0116','0121','0129','0130','0133','0134',
-  '0136','0137','0138','0142','0156','0157','0162',
-  '0270','0277','0278','0281','0284','0285','0287','0288',
-  '0289','0291'
-].flatMap(id => [`./illustrations/${id}-relaxation.svg`, `./illustrations/${id}-tension.svg`]);
+// Лёгкие SVG-анимации кэшируются сразу (офлайн), тяжёлые GIF — по мере просмотра (см. fetch ниже)
+const EXERCISE_IDS = [
+  'bent-over-row', 'bicep-curl', 'bird-dog', 'bodyweight-squat',
+  'bulgarian-split-squat', 'burpee', 'butt-kicks', 'calf-raise',
+  'childs-pose', 'chin-tuck', 'crunch', 'frog-jumps',
+  'glute-bridge', 'hamstring-stretch', 'high-knees', 'hip-flexor-stretch',
+  'jump-rope', 'jumping-jacks', 'knee-push-up', 'lateral-raise',
+  'leg-raise', 'march', 'mountain-climbers', 'neck-tilt',
+  'overhead-reach', 'plank-up-down', 'pogo-hops', 'push-up',
+  'quad-stretch', 'reverse-lunge', 'romanian-deadlift', 'seated-forward-fold',
+  'seated-knee-extension', 'shadow-boxing', 'shoulder-press', 'side-bend',
+  'ski-hops', 'sphinx-pose', 'squat-jump', 'step-touch',
+  'sumo-squat', 'superman', 'triceps-extension', 'tuck-jumps',
+  'wall-angels'
+];
+const EXERCISE_SVG = EXERCISE_IDS.map(id => `./svg/${id}.svg`);
 
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => cache.addAll([...APP_SHELL, ...ILLUSTRATIONS]))
+      .then(cache => cache.addAll([...APP_SHELL, ...EXERCISE_SVG]))
       .then(() => self.skipWaiting())
   );
 });
@@ -63,6 +70,16 @@ self.addEventListener('fetch', event => {
         })
         .catch(() => cached);
       return cached || network;
+    })
+  );
+});
+// Нажатие на напоминание открывает приложение
+self.addEventListener('notificationclick', event => {
+  event.notification.close();
+  event.waitUntil(
+    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(list => {
+      const open = list.find(c => 'focus' in c);
+      return open ? open.focus() : self.clients.openWindow('./');
     })
   );
 });

@@ -63,13 +63,61 @@ const programs = {
 const translations = {
     ru: {
         brandTagline: 'Тренировки · вода · прогресс',
+        hardBadge: 'Сложное',
+        hardHint: 'Сложное упражнение — его можно пропустить, оно всё равно засчитается',
+        hardNote: 'Сложное упражнение. Если сейчас не получается или болит — его можно пропустить, оно всё равно засчитается.',
+        skipButton: 'Пропустить (засчитается)',
+        skippedTitle: 'Упражнение засчитано',
+        skippedText: 'Пропущено — отмечено как выполненное.',
+        skippedTag: 'пропущено',
+        reminderEyebrow: 'ПЕРЕРЫВ',
+        reminderTitle: 'Напоминание о разминке',
+        reminderText: 'Раз в выбранное время напомню встать, размяться и выпить воды. Работает для любой программы и выключено по умолчанию.',
+        reminderEvery: 'Напоминать каждые',
+        minutesShort: 'мин',
+        reminderTest: 'Показать пример',
+        reminderOff: 'Выключено.',
+        reminderNext: 'Следующее напоминание около',
+        reminderNote: 'Работает, пока сайт открыт (даже в фоновой вкладке). С 22:00 до 08:00 не беспокоит.',
+        reminderDenied: 'Уведомления браузера запрещены — напоминания будут появляться на странице.',
+        reminderUnsupported: 'Браузер не поддерживает уведомления — напоминания будут появляться на странице.',
+        reminderOnTitle: 'Напоминания включены',
+        reminderOnText: 'Напомню о перерыве, пока сайт открыт.',
+        reminderBreakTitle: 'Пора размяться!',
+        reminderToday: 'Сегодня в плане:',
+        reminderMsgs: [
+            'Встань, потянись и пройдись минуту — спина скажет спасибо.',
+            'Оторви взгляд от экрана на 20 секунд и сделай пару наклонов головы.',
+            'Перерыв: расправь плечи, глубоко вдохни и выпей воды.',
+            'Две минуты движения — и голова снова свежая.'
+        ],
+        themeDark: 'Тёмная тема',
+        levelLabel: 'Уровень',
+        levelBeginner: 'Начинающий',
+        levelIntermediate: 'Средний',
+        levelAdvanced: 'Продвинутый',
+        levelDescBeginner: 'Только начинаю или давно не занимался(лась): меньше подходов и повторов',
+        levelDescIntermediate: 'Занимаюсь время от времени: стандартная нагрузка',
+        levelDescAdvanced: 'Тренируюсь регулярно: больше подходов и повторов',
+        levelModalTitle: 'Какой у тебя уровень подготовки?',
+        levelModalText: 'От него зависит число подходов и повторов. Уровень можно сменить в любой момент в шапке сайта.',
+        levelChangedTitle: 'Уровень обновлён',
+        levelChangedText: 'Подходы и повторы пересчитаны.',
+        restBetween: 'отдых между подходами указан у каждого упражнения',
+        restShort: 'отдых',
+        secShort: 'с',
+        setLabel: 'Подход',
+        startTimer: 'Запустить таймер',
+        timerWork: 'Подход',
+        timerRest: 'Отдых',
+        timerSkip: 'Пропустить',
+        timerFinish: 'Готово',
+        restOver: 'Отдых закончился — следующий подход!',
         glassCaption: 'Твой стакан',
         hintButton: 'Подсказка',
         frameOne: 'Исходное положение',
         frameTwo: 'Движение',
         hintLabel: 'Как выполнять',
-        online: 'Готов к работе',
-        offline: 'Офлайн-режим',
         language: 'Язык',
         dailyTitle: 'ТВОЙ ПЛАН НА СЕГОДНЯ',
         welcome: 'Небольшой шаг — уже прогресс.',
@@ -87,8 +135,8 @@ const translations = {
         goalStrength: 'Сила и мышцы',
         goalStrengthDesc: 'Базовые силовые упражнения',
         todayWorkout: 'СЕГОДНЯ',
-        dailySelectionNote: 'Каждый день выбираются 4 упражнения из каталога. Завтра набор обновится.',
-        checkHint: 'Отмечай упражнение после выполнения. Отметки сохраняются автоматически.',
+        dailySelectionNote: 'Каждый день выбираются 4 упражнения из этой программы (всего их по 15 в каждой). Завтра набор обновится; уровень меняет подходы и повторы.',
+        checkHint: 'Отмечай подходы по ходу тренировки: после каждого запускается отдых. Прогресс сохраняется автоматически.',
         resetWorkout: 'Сбросить отметки',
         waterEyebrow: 'ПОЛЕЗНАЯ ПРИВЫЧКА',
         waterTitle: 'Вода сегодня',
@@ -97,8 +145,6 @@ const translations = {
         resetWater: 'Сбросить',
         tipEyebrow: 'НЕБОЛЬШОЙ СОВЕТ',
         disclaimer: 'Подсказки носят общий информационный характер и не заменяют рекомендации специалиста.',
-        privacyTitle: 'Твои данные — твои',
-        privacyCopy: 'Всё хранится локально в браузере. Аккаунт не нужен. Очистка данных браузера может удалить прогресс.',
         footerText: 'Простой фитнес-помощник для студенческих будней',
         clearData: 'Удалить все мои данные',
         waterButton: '+ 250 мл',
@@ -126,13 +172,61 @@ const translations = {
     },
     en: {
         brandTagline: 'Workouts · water · progress',
+        hardBadge: 'Hard',
+        hardHint: 'A hard exercise — you can skip it and it still counts',
+        hardNote: 'This one is hard. If it does not work for you today or it hurts, you can skip it and it still counts.',
+        skipButton: 'Skip (still counts)',
+        skippedTitle: 'Exercise counted',
+        skippedText: 'Skipped — marked as done.',
+        skippedTag: 'skipped',
+        reminderEyebrow: 'BREAK',
+        reminderTitle: 'Stretch reminder',
+        reminderText: 'At the interval you choose I will remind you to stand up, move and drink water. Works for every program and is off by default.',
+        reminderEvery: 'Remind me every',
+        minutesShort: 'min',
+        reminderTest: 'Show example',
+        reminderOff: 'Off.',
+        reminderNext: 'Next reminder around',
+        reminderNote: 'Works while the site is open (even in a background tab). Quiet from 22:00 to 08:00.',
+        reminderDenied: 'Browser notifications are blocked — reminders will appear on the page.',
+        reminderUnsupported: 'This browser has no notifications — reminders will appear on the page.',
+        reminderOnTitle: 'Reminders on',
+        reminderOnText: 'I will remind you to take a break while the site is open.',
+        reminderBreakTitle: 'Time to move!',
+        reminderToday: 'On today\'s plan:',
+        reminderMsgs: [
+            'Stand up, stretch and walk around for a minute — your back will thank you.',
+            'Look away from the screen for 20 seconds and do a few neck tilts.',
+            'Break time: roll your shoulders back, breathe deeply and drink some water.',
+            'Two minutes of movement and your head feels fresh again.'
+        ],
+        themeDark: 'Dark theme',
+        levelLabel: 'Level',
+        levelBeginner: 'Beginner',
+        levelIntermediate: 'Intermediate',
+        levelAdvanced: 'Advanced',
+        levelDescBeginner: 'Just starting or back after a long break: fewer sets and reps',
+        levelDescIntermediate: 'Active from time to time: standard workload',
+        levelDescAdvanced: 'Train regularly: more sets and reps',
+        levelModalTitle: 'What is your fitness level?',
+        levelModalText: 'It sets the number of sets and reps. You can change it any time in the header.',
+        levelChangedTitle: 'Level updated',
+        levelChangedText: 'Sets and reps were recalculated.',
+        restBetween: 'rest between sets is shown for each exercise',
+        restShort: 'rest',
+        secShort: 's',
+        setLabel: 'Set',
+        startTimer: 'Start timer',
+        timerWork: 'Set',
+        timerRest: 'Rest',
+        timerSkip: 'Skip',
+        timerFinish: 'Done',
+        restOver: 'Rest is over — next set!',
         glassCaption: 'Your glass',
         hintButton: 'How to',
         frameOne: 'Start position',
         frameTwo: 'Movement',
         hintLabel: 'How to do it',
-        online: 'Ready to use',
-        offline: 'Offline mode',
         language: 'Language',
         dailyTitle: 'YOUR PLAN FOR TODAY',
         welcome: 'Small steps are still progress.',
@@ -150,8 +244,8 @@ const translations = {
         goalStrength: 'Strength basics',
         goalStrengthDesc: 'Simple strength exercises',
         todayWorkout: 'TODAY',
-        dailySelectionNote: 'Four exercises are selected from the catalog each day. The set updates tomorrow.',
-        checkHint: 'Check an exercise when you finish. Your progress saves automatically.',
+        dailySelectionNote: 'Four exercises are picked from this program each day. The set updates tomorrow; your level adjusts sets and reps.',
+        checkHint: 'Tick sets as you go — a rest timer starts after each one. Progress saves automatically.',
         resetWorkout: 'Reset checkmarks',
         waterEyebrow: 'A HEALTHY HABIT',
         waterTitle: 'Water today',
@@ -160,8 +254,6 @@ const translations = {
         resetWater: 'Reset',
         tipEyebrow: 'A SMALL TIP',
         disclaimer: 'Tips are general information and do not replace professional advice.',
-        privacyTitle: 'Your data belongs to you',
-        privacyCopy: 'Everything is stored locally in this browser. No account is needed. Clearing browser data may erase your progress.',
         footerText: 'A simple fitness helper for student life',
         clearData: 'Delete all my data',
         waterButton: '+ 250 ml',
@@ -199,10 +291,17 @@ function previousDateKey(dateKey) {
     return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
 
+const LEVELS = ['beginner', 'intermediate', 'advanced'];
+const DAILY_COUNT = 4;
+// Отдых между подходами (сек): [начинающий, средний, продвинутый]
+const REST_SECONDS = {
+    back: [20, 15, 10],
+    cardio: [45, 30, 20],
+    strength: [75, 60, 45]
+};
+
 function exercisePool(goal) {
-    const base = window.FIT_BASE_EXERCISES?.[goal] || [];
-    const extra = window.FIT_EXTRA_EXERCISES?.[goal] || [];
-    return [...base, ...extra];
+    return window.FIT_EXERCISES?.[goal] || [];
 }
 
 function stableHash(value) {
@@ -224,17 +323,30 @@ function pickDailyExercises(pool, dateKey, goal, count = 4, excludeIds = []) {
         .slice(0, Math.min(count, source.length));
 }
 
+// Последняя запись истории строго до указанной даты (вчера или последний день, когда заходили в приложение)
+function lastHistoryRecord(dateKey) {
+    const dates = Object.keys(state?.history || {}).filter(d => d < dateKey).sort();
+    return dates.length ? state.history[dates[dates.length - 1]] : null;
+}
+
 function refreshDailyExercises(dateKey = localDateKey()) {
     let anyEmpty = false;
-    const yesterday = previousDateKey(dateKey);
-    const yesterdayRecord = state?.history?.[yesterday];
+    const previousRecord = lastHistoryRecord(dateKey);
+    if (!state.daily.picked || typeof state.daily.picked !== 'object') state.daily.picked = {};
 
     for (const goal of Object.keys(programs)) {
         const pool = exercisePool(goal);
         if (!pool.length) anyEmpty = true;
 
-        const excludeIds = yesterdayRecord?.exercises?.[goal] || [];
-        programs[goal].exercises = pickDailyExercises(pool, dateKey, goal, 4, excludeIds);
+        // набор дня фиксируется: перезагрузка страницы его не меняет
+        const saved = (state.daily.picked[goal] || []).map(id => pool.find(ex => ex.id === id)).filter(Boolean);
+        if (saved.length === Math.min(DAILY_COUNT, pool.length)) {
+            programs[goal].exercises = saved;
+            continue;
+        }
+        const excludeIds = previousRecord?.exercises?.[goal] || [];
+        programs[goal].exercises = pickDailyExercises(pool, dateKey, goal, DAILY_COUNT, excludeIds);
+        state.daily.picked[goal] = programs[goal].exercises.map(ex => ex.id);
     }
     if (anyEmpty) console.warn('[FITСтудент] Каталог упражнений пуст или не загрузился.');
 }
@@ -247,9 +359,19 @@ function freshState() {
     return {
         language: 'ru',
         selectedGoal: 'back',
+        level: null,
+        theme: null,
+        reminder: { enabled: false, minutes: 45, next: 0, count: 0 },
         daily: {
             date: localDateKey(),
             water: 0,
+            picked: {},
+            skipped: { back: [], cardio: [], strength: [] },
+            sets: {
+                back: {},
+                cardio: {},
+                strength: {}
+            },
             checks: {
                 back: [],
                 cardio: [],
@@ -286,8 +408,22 @@ function loadState() {
         };
         if (!translations[state.language]) state.language = 'ru';
         if (!programs[state.selectedGoal]) state.selectedGoal = 'back';
+        if (!LEVELS.includes(state.level)) state.level = null;
+        if (state.theme !== 'light' && state.theme !== 'dark') state.theme = null;
+        if (!state.daily.picked || typeof state.daily.picked !== 'object') state.daily.picked = {};
+        if (!state.daily.sets || typeof state.daily.sets !== 'object') state.daily.sets = {};
+        if (!state.daily.skipped || typeof state.daily.skipped !== 'object') state.daily.skipped = {};
+        const rem = state.reminder && typeof state.reminder === 'object' ? state.reminder : {};
+        state.reminder = {
+            enabled: rem.enabled === true,
+            minutes: [30, 45, 60, 90].includes(rem.minutes) ? rem.minutes : 45,
+            next: Number(rem.next) || 0,
+            count: Number(rem.count) || 0
+        };
         for (const key of Object.keys(programs)) {
             if (!Array.isArray(state.daily.checks[key])) state.daily.checks[key] = [];
+            if (!state.daily.sets[key] || typeof state.daily.sets[key] !== 'object') state.daily.sets[key] = {};
+            if (!Array.isArray(state.daily.skipped[key])) state.daily.skipped[key] = [];
         }
         state.daily.water = Math.max(0, Math.min(WATER_GOAL, Number(state.daily.water) || 0));
         if (!Array.isArray(state.daily.completedPrograms)) state.daily.completedPrograms = [];
@@ -330,15 +466,132 @@ let previousWaterPercent = 0;
 rolloverDay();
 refreshDailyExercises(state.daily.date);
 
-for (const key of Object.keys(programs)) {
-    state.daily.checks[key] = state.daily.checks[key]
-        .filter(id => programs[key].exercises.some(ex => ex.id === id));
-}
 
 const $ = id => document.getElementById(id);
 const lang = () => state.language;
 const t = key => translations[lang()][key] || key;
 const formatNumber = n => new Intl.NumberFormat(lang() === 'ru' ? 'ru-RU' : 'en-US').format(n);
+
+// ---------- Напоминание о перерыве ----------
+const QUIET_FROM = 22, QUIET_TO = 8;
+
+function isQuietHour(date = new Date()) {
+    const h = date.getHours();
+    return h >= QUIET_FROM || h < QUIET_TO;
+}
+
+function reminderBody() {
+    const msgs = t('reminderMsgs');
+    let text = msgs[state.reminder.count % msgs.length];
+    const goal = state.selectedGoal;
+    const next = programs[goal].exercises.find(ex => setsDone(goal, ex) < totalSets(ex));
+    if (next) text += ` ${t('reminderToday')} ${next.name[lang()]}.`;
+    return text;
+}
+
+async function sendBreakNotification() {
+    const title = t('reminderBreakTitle');
+    const body = reminderBody();
+    state.reminder.count += 1;
+    saveState();
+    let shown = false;
+    if ('Notification' in window && Notification.permission === 'granted') {
+        const options = { body, icon: 'icons/icon.svg', tag: 'fitstudent-break', renotify: true };
+        try {
+            const reg = await navigator.serviceWorker?.getRegistration();
+            if (reg) {
+                await reg.showNotification(title, options);
+                shown = true;
+            } else {
+                new Notification(title, options);
+                shown = true;
+            }
+        } catch (e) {
+            try {
+                new Notification(title, options);
+                shown = true;
+            } catch (e2) { /* покажем на странице */ }
+        }
+    }
+    if (!shown || document.visibilityState === 'visible') showToast('🧘', title, body);
+}
+
+function scheduleNextReminder(from = Date.now()) {
+    state.reminder.next = from + state.reminder.minutes * 60000;
+    saveState();
+    updateReminderUI();
+}
+
+function checkReminder() {
+    const r = state.reminder;
+    if (!r.enabled) return;
+    const now = Date.now();
+    if (now < r.next) return;
+    // долгая пауза (закрытая крышка, сон) — не засыпаем напоминаниями, просто переносим
+    const stale = now - r.next > 2 * 60000;
+    const quiet = isQuietHour();
+    scheduleNextReminder(now);
+    if (!stale && !quiet) sendBreakNotification();
+}
+
+function updateReminderUI() {
+    const r = state.reminder;
+    const toggle = $('reminder-toggle');
+    if (!toggle) return;
+    toggle.setAttribute('aria-checked', String(r.enabled));
+    toggle.setAttribute('aria-label', t('reminderTitle'));
+    $('reminder-interval').value = String(r.minutes);
+    $('reminder-controls').classList.toggle('disabled', !r.enabled);
+    $('reminder-interval').disabled = !r.enabled;
+    const status = $('reminder-status');
+    if (!r.enabled) {
+        status.textContent = t('reminderOff');
+        return;
+    }
+    const time = new Date(r.next).toLocaleTimeString(lang() === 'ru' ? 'ru-RU' : 'en-GB', { hour: '2-digit', minute: '2-digit' });
+    let text = `${t('reminderNext')} ${time}. ${t('reminderNote')}`;
+    if (!('Notification' in window)) text += ` ${t('reminderUnsupported')}`;
+    else if (Notification.permission === 'denied') text += ` ${t('reminderDenied')}`;
+    status.textContent = text;
+}
+
+async function setReminderEnabled(on) {
+    if (on && 'Notification' in window && Notification.permission === 'default') {
+        try { await Notification.requestPermission(); } catch (e) { /* старые браузеры */ }
+    }
+    state.reminder.enabled = on;
+    if (on) {
+        scheduleNextReminder();
+        showToast('⏰', t('reminderOnTitle'), t('reminderOnText'));
+    } else {
+        saveState();
+        updateReminderUI();
+    }
+}
+
+const isDark = () => state.theme
+    ? state.theme === 'dark'
+    : window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+
+function applyTheme() {
+    const dark = isDark();
+    document.documentElement.toggleAttribute('data-theme', false);
+    if (dark) document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+    let meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) {
+        meta = document.createElement('meta');
+        meta.name = 'theme-color';
+        document.head.appendChild(meta);
+    }
+    meta.content = dark ? '#0f1524' : (BRAND.themeColor || '#326af5');
+    const toggle = $('theme-toggle');
+    if (toggle) {
+        toggle.setAttribute('aria-checked', String(dark));
+        toggle.setAttribute('aria-label', t('themeDark'));
+        toggle.title = t('themeDark');
+    }
+}
 
 function applyBrand() {
     if (!BRAND || !Object.keys(BRAND).length) return;
@@ -349,10 +602,8 @@ function applyBrand() {
             meta.name = 'theme-color';
             document.head.appendChild(meta);
         }
-        meta.content = BRAND.themeColor;
         document.documentElement.style.setProperty('--blue', BRAND.themeColor);
     }
-    if (BRAND.bgColor) document.documentElement.style.setProperty('--bg', BRAND.bgColor);
     const logoWrap = $('brand-logo');
     const logoImg = $('brand-logo-img');
     const fallback = $('brand-logo-fallback');
@@ -464,7 +715,7 @@ function ensureHintModal() {
     });
     document.addEventListener('keydown', (e) => {
         if (!backdrop.classList.contains('show')) return;
-        if (e.key === 'Escape' || e.key === 'Enter') closeHintModal();
+        if (e.key === 'Escape' || (e.key === 'Enter' && document.activeElement?.id !== 'hint-modal-skip')) closeHintModal();
     });
     return backdrop;
 }
@@ -473,17 +724,44 @@ function openHintModal(ex) {
     const backdrop = ensureHintModal();
     backdrop.querySelector('#hint-modal-icon').textContent = ex.icon || '🧘';
     backdrop.querySelector('#hint-modal-title').textContent = ex.name[lang()];
-    backdrop.querySelector('#hint-modal-dose').textContent = ex.dose[lang()];
+    backdrop.querySelector('#hint-modal-dose').textContent = `${formatDose(ex)} · ${ex.focus[lang()]}`;
     const body = backdrop.querySelector('#hint-modal-body');
-    body.innerHTML = `
-    <div class="two-frame-animation">
-      <div class="pose-frame"><span class="frame-number">1</span>${exerciseFrame(ex.frameId || ex.id, false)}<span class="frame-label">${t('frameOne')}</span></div>
-      <span class="frame-arrow" aria-hidden="true">→</span>
-      <div class="pose-frame"><span class="frame-number">2</span>${exerciseFrame(ex.frameId || ex.id, true)}<span class="frame-label">${t('frameTwo')}</span></div>
-    </div>
-    <p class="hint-instruction">${ex.description[lang()]}</p>
-    <p class="hint-safety">⚠ ${ex.safety[lang()]}</p>`;
+    body.innerHTML = '';
+    const media = document.createElement('div');
+    media.className = 'hint-media';
+    const img = exerciseThumb(ex, 'hint-gif');
+    img.alt = ex.name[lang()];
+    img.loading = 'eager';
+    media.append(img);
+    const instruction = document.createElement('p');
+    instruction.className = 'hint-instruction';
+    instruction.textContent = ex.description[lang()];
+    const safety = document.createElement('p');
+    safety.className = 'hint-safety';
+    safety.textContent = `⚠ ${ex.safety[lang()]}`;
+    body.append(media, instruction, safety);
     backdrop.querySelector('#hint-modal-ok').textContent = t('ok');
+    const goal = state.selectedGoal;
+    const actions = backdrop.querySelector('.modal-actions');
+    actions.querySelector('#hint-modal-skip')?.remove();
+    if (ex.hard) {
+        const hardNote = document.createElement('p');
+        hardNote.className = 'hint-hard';
+        hardNote.textContent = `🔥 ${t('hardNote')}`;
+        body.append(hardNote);
+        if (setsDone(goal, ex) < totalSets(ex)) {
+            const skip = document.createElement('button');
+            skip.type = 'button';
+            skip.id = 'hint-modal-skip';
+            skip.className = 'skip-button';
+            skip.textContent = t('skipButton');
+            skip.addEventListener('click', () => {
+                closeHintModal();
+                skipExercise(goal, ex);
+            });
+            actions.prepend(skip);
+        }
+    }
     backdrop.classList.add('show');
     setTimeout(() => backdrop.querySelector('#hint-modal-ok').focus(), 90);
 }
@@ -492,6 +770,53 @@ function closeHintModal() {
     const backdrop = document.getElementById('hint-modal');
     if (!backdrop) return;
     backdrop.classList.remove('show');
+}
+
+function ensureLevelModal() {
+    const backdrop = ensureBackdrop('level-modal', 'level-modal');
+    if (backdrop.dataset.ready) return backdrop;
+    backdrop.dataset.ready = '1';
+    backdrop.addEventListener('click', e => {
+        const btn = e.target.closest('[data-level]');
+        if (btn) {
+            setLevel(btn.dataset.level);
+            backdrop.classList.remove('show');
+        } else if (e.target === backdrop && state.level) {
+            backdrop.classList.remove('show');
+        }
+    });
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && backdrop.classList.contains('show') && state.level) backdrop.classList.remove('show');
+    });
+    return backdrop;
+}
+
+function openLevelModal() {
+    const backdrop = ensureLevelModal();
+    const cards = LEVELS.map(lv => {
+        const key = lv[0].toUpperCase() + lv.slice(1);
+        const active = state.level === lv ? ' active' : '';
+        return `<button type="button" class="level-card${active}" data-level="${lv}">
+            <span class="level-emoji" aria-hidden="true">${{ beginner: '🌱', intermediate: '🔥', advanced: '🚀' }[lv]}</span>
+            <span><strong>${t('level' + key)}</strong><small>${t('levelDesc' + key)}</small></span></button>`;
+    }).join('');
+    backdrop.innerHTML = `<div class="modal-card level-card-wrap" role="document">
+        <h3>${t('levelModalTitle')}</h3>
+        <p>${t('levelModalText')}</p>
+        <div class="level-options">${cards}</div></div>`;
+    backdrop.classList.add('show');
+    setTimeout(() => backdrop.querySelector('.level-card')?.focus(), 90);
+}
+
+function setLevel(newLevel, { silent = false } = {}) {
+    if (!LEVELS.includes(newLevel)) return;
+    const changed = state.level !== null && state.level !== newLevel;
+    state.level = newLevel;
+    if (timer) stopTimer();
+    for (const goal of Object.keys(programs)) recalcProgram(goal);
+    saveState();
+    applyTranslations();
+    if (changed && !silent) showToast('🎯', t('levelChangedTitle'), t('levelChangedText'));
 }
 
 function saveState() {
@@ -514,6 +839,13 @@ function applyTranslations() {
         if (translations[lang()][key]) el.textContent = translations[lang()][key];
     });
     $('language-select').value = lang();
+    applyTheme();
+    updateReminderUI();
+    const levelSelect = $('level-select');
+    if (levelSelect) {
+        levelSelect.value = level();
+        levelSelect.querySelectorAll('option').forEach(o => o.textContent = t('level' + o.value[0].toUpperCase() + o.value.slice(1)));
+    }
     $('today-date').textContent = new Intl.DateTimeFormat(lang() === 'ru' ? 'ru-RU' : 'en-US', {
         weekday: 'short',
         day: 'numeric',
@@ -527,11 +859,11 @@ function applyTranslations() {
     renderWorkout();
     updateWaterUI(true);
     updateStats(true);
-    updateConnectionStatus();
 }
 
 function selectGoal(goal) {
     if (!programs[goal] || goal === state.selectedGoal) return;
+    if (timer && timer.kind === 'work') stopTimer();
     state.selectedGoal = goal;
     saveState();
     workoutCelebrated = state.daily.celebrated?.workouts?.[goal] ?? false;
@@ -549,129 +881,384 @@ function selectGoal(goal) {
     }, 220);
 }
 
-function exerciseFrame(id, second = false) {
-    if (window.FIT_ILLUSTRATIONS?.render) {
-        return window.FIT_ILLUSTRATIONS.render(id, second);
+// ---------- Уровень, подходы, дозировка ----------
+const level = () => state.level || 'intermediate';
+const levelIndex = () => LEVELS.indexOf(level());
+const totalSets = ex => ex.work.levels[level()][0];
+const setAmount = ex => ex.work.levels[level()][1];
+// Отдых подбирается под упражнение: после короткого подхода «на время» он тоже короткий
+// (начинающий — 1:1 к работе, средний — 1:1,5, продвинутый — 1:2), но не больше базового отдыха программы.
+function restSeconds(goal, ex) {
+    const base = REST_SECONDS[goal][levelIndex()];
+    if (ex.work.unit !== 'sec') return base;
+    const ratio = [1, 1.5, 2][levelIndex()];
+    const scaled = Math.round(setAmount(ex) / ratio / 5) * 5;
+    return Math.min(base, Math.max(10, scaled));
+}
+const setsDone = (goal, ex) => Math.min(state.daily.sets[goal][ex.id] || 0, totalSets(ex));
+
+function recalcProgram(goal) {
+    const exercises = programs[goal].exercises;
+    state.daily.checks[goal] = exercises.filter(ex => (state.daily.sets[goal][ex.id] || 0) >= totalSets(ex)).map(ex => ex.id);
+    const complete = exercises.length > 0 && state.daily.checks[goal].length === exercises.length;
+    state.daily.completedPrograms = state.daily.completedPrograms.filter(x => x !== goal);
+    if (complete) state.daily.completedPrograms.push(goal);
+    return complete;
+}
+
+function programProgress(goal) {
+    const exercises = programs[goal].exercises;
+    let done = 0, total = 0;
+    exercises.forEach(ex => {
+        done += setsDone(goal, ex);
+        total += totalSets(ex);
+    });
+    return { done, total, exDone: state.daily.checks[goal].length, exTotal: exercises.length };
+}
+
+function plural(n, forms) {
+    // forms: [один, два-четыре, много] — для русского; для английского [one, many]
+    if (lang() === 'en') return n === 1 ? forms[0] : forms[forms.length - 1];
+    const m10 = n % 10, m100 = n % 100;
+    if (m10 === 1 && m100 !== 11) return forms[0];
+    if (m10 >= 2 && m10 <= 4 && (m100 < 10 || m100 >= 20)) return forms[1];
+    return forms[2];
+}
+
+function formatDose(ex) {
+    const [sets, amount] = ex.work.levels[level()];
+    const setsWord = lang() === 'ru' ? plural(sets, ['подход', 'подхода', 'подходов']) : plural(sets, ['set', 'sets']);
+    let text;
+    if (ex.work.unit === 'sec') {
+        text = `${sets} ${setsWord} × ${amount} ${lang() === 'ru' ? 'с' : 's'}`;
+    } else {
+        text = `${sets} ${setsWord} × ${amount} ${lang() === 'ru' ? 'раз' : 'reps'}`;
     }
-    return '<div class="pose-missing">?</div>';
+    if (ex.work.side) text += lang() === 'ru' ? ' на каждую сторону' : ' per side';
+    if (ex.work.hold) text += lang() === 'ru' ? ` · удержание ${ex.work.hold} с` : ` · ${ex.work.hold} s hold`;
+    if (sets > 1) text += ` · ${t('restShort')} ${restSeconds(state.selectedGoal, ex)} ${t('secShort')}`;
+    return text;
+}
+
+function formatClock(sec) {
+    const s = Math.max(0, Math.ceil(sec));
+    return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+}
+
+// ---------- Таймер (работа / отдых) ----------
+let timer = null;
+
+function ensureTimerBar() {
+    let bar = document.getElementById('timer-bar');
+    if (bar) return bar;
+    bar = document.createElement('div');
+    bar.id = 'timer-bar';
+    bar.className = 'timer-bar';
+    bar.setAttribute('role', 'timer');
+    bar.innerHTML = `
+      <div class="timer-info"><span class="timer-kind" id="timer-kind"></span><span class="timer-name" id="timer-name"></span></div>
+      <div class="timer-clock" id="timer-clock">0:00</div>
+      <button type="button" class="timer-skip" id="timer-skip"></button>
+      <div class="timer-track"><div class="timer-fill" id="timer-fill"></div></div>`;
+    document.body.appendChild(bar);
+    bar.querySelector('#timer-skip').addEventListener('click', () => stopTimer(true));
+    return bar;
+}
+
+function stopTimer(skipped = false) {
+    if (!timer) return;
+    const t0 = timer;
+    timer = null;
+    clearInterval(t0.interval);
+    document.getElementById('timer-bar')?.classList.remove('show');
+    if (t0.kind === 'work') {
+        // «Пропустить» на рабочем таймере = подход выполнен досрочно; «Стоп» тоже считаем выполненным
+        if (skipped && t0.onSkip) t0.onSkip();
+    }
+    renderTimerButtons();
+}
+
+function startTimer(kind, seconds, name, goal, exId, onDone) {
+    if (timer) {
+        clearInterval(timer.interval);
+        timer = null;
+    }
+    const bar = ensureTimerBar();
+    bar.dataset.kind = kind;
+    bar.querySelector('#timer-kind').textContent = kind === 'work' ? t('timerWork') : t('timerRest');
+    bar.querySelector('#timer-name').textContent = name;
+    bar.querySelector('#timer-skip').textContent = kind === 'work' ? t('timerFinish') : t('timerSkip');
+    timer = { kind, total: seconds, end: Date.now() + seconds * 1000, goal, exId, onDone, onSkip: onDone };
+    const tick = () => {
+        if (!timer) return;
+        const left = (timer.end - Date.now()) / 1000;
+        bar.querySelector('#timer-clock').textContent = formatClock(left);
+        bar.querySelector('#timer-fill').style.width = `${Math.min(100, Math.max(0, (1 - left / timer.total) * 100))}%`;
+        if (left <= 0) {
+            const done = timer.onDone;
+            const finishedKind = timer.kind;
+            clearInterval(timer.interval);
+            timer = null;
+            bar.classList.remove('show');
+            try { navigator.vibrate?.(finishedKind === 'work' ? [120, 80, 120] : 200); } catch (e) {}
+            if (finishedKind === 'rest') showToast('⏱️', t('restOver'), '');
+            if (done) done();
+            renderTimerButtons();
+        }
+    };
+    timer.interval = setInterval(tick, 250);
+    tick();
+    bar.classList.add('show');
+    renderTimerButtons();
+}
+
+function renderTimerButtons() {
+    document.querySelectorAll('.timer-start').forEach(btn => {
+        const active = timer && timer.kind === 'work' && timer.exId === btn.dataset.exId;
+        btn.classList.toggle('running', !!active);
+        btn.disabled = !!(timer && timer.kind === 'work' && !active);
+    });
+}
+
+// ---------- Подходы ----------
+function afterProgressChange(goal, wasComplete) {
+    const complete = recalcProgram(goal);
+    saveState();
+    if (complete && !wasComplete && !state.daily.celebrated.workouts[goal]) {
+        state.daily.celebrated.workouts[goal] = true;
+        if (goal === state.selectedGoal) workoutCelebrated = true;
+        saveState();
+        showToast('🎉', t('allDoneTitle'), t('allDoneText'));
+    }
+    if (!complete && goal === state.selectedGoal) workoutCelebrated = false;
+}
+
+function setSetsDone(goal, ex, count, { rest = false, skipped = false } = {}) {
+    const wasComplete = state.daily.completedPrograms.includes(goal);
+    const before = setsDone(goal, ex);
+    state.daily.sets[goal][ex.id] = Math.max(0, Math.min(totalSets(ex), count));
+    const list = state.daily.skipped[goal];
+    const at = list.indexOf(ex.id);
+    if (skipped && at === -1) list.push(ex.id);
+    if (!skipped && at !== -1) list.splice(at, 1);
+    afterProgressChange(goal, wasComplete);
+    refreshItem(goal, ex);
+    updateWorkoutProgress();
+    updateStats();
+
+    const after = setsDone(goal, ex);
+    const exerciseDone = after >= totalSets(ex);
+    if (rest && after > before && !exerciseDone) {
+        startTimer('rest', restSeconds(goal, ex), ex.name[lang()], goal, ex.id, null);
+    } else if (exerciseDone && timer && timer.kind === 'rest') {
+        stopTimer();
+    }
+}
+
+function tapSet(goal, ex, index) {
+    const done = setsDone(goal, ex);
+    if (timer && timer.kind === 'work') stopTimer();
+    setSetsDone(goal, ex, done > index ? index : index + 1, { rest: done <= index });
+}
+
+function toggleExercise(ex) {
+    const goal = state.selectedGoal;
+    const complete = setsDone(goal, ex) >= totalSets(ex);
+    if (timer && timer.exId === ex.id) stopTimer();
+    setSetsDone(goal, ex, complete ? 0 : totalSets(ex));
+}
+
+const isSkipped = (goal, ex) => state.daily.skipped[goal].includes(ex.id) && setsDone(goal, ex) >= totalSets(ex);
+
+function skipExercise(goal, ex) {
+    if (timer && timer.exId === ex.id) stopTimer();
+    else if (timer && timer.kind === 'rest') stopTimer();
+    setSetsDone(goal, ex, totalSets(ex), { skipped: true });
+    showToast('⏭️', t('skippedTitle'), t('skippedText'));
+}
+
+function startWorkTimer(goal, ex) {
+    if (timer && timer.kind === 'work' && timer.exId === ex.id) {
+        stopTimer(false);
+        return;
+    }
+    const next = setsDone(goal, ex);
+    if (next >= totalSets(ex)) return;
+    const finish = () => setSetsDone(goal, ex, setsDone(goal, ex) + 1, { rest: true });
+    startTimer('work', setAmount(ex), `${ex.name[lang()]} · ${next + 1}/${totalSets(ex)}`, goal, ex.id, finish);
+}
+
+function exerciseThumb(ex, cls = 'exercise-thumb') {
+    const img = document.createElement('img');
+    img.className = cls;
+    img.alt = '';
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    img.src = ex.svg;
+    img.addEventListener('error', () => {
+        if (!img.dataset.fallback && ex.gif) {
+            img.dataset.fallback = '1';
+            img.src = ex.gif;
+        }
+    });
+    return img;
+}
+
+function buildItem(goal, ex, index, animate) {
+    const total = totalSets(ex);
+    const done = setsDone(goal, ex);
+    const isDone = done >= total;
+    const li = document.createElement('li');
+    li.className = `workout-item${isDone ? ' done' : ''}${animate ? '' : ' no-anim'}`;
+    li.dataset.exId = ex.id;
+    li.style.setProperty('--item-delay', `${index * 60}ms`);
+
+    const number = document.createElement('span');
+    number.className = 'exercise-number';
+    number.append(exerciseThumb(ex));
+
+    const main = document.createElement('div');
+    main.className = 'exercise-main';
+
+    const titleRow = document.createElement('div');
+    titleRow.className = 'exercise-title-row';
+
+    const name = document.createElement('span');
+    name.className = 'exercise-name';
+    name.textContent = ex.name[lang()];
+
+    const hintButton = document.createElement('button');
+    hintButton.type = 'button';
+    hintButton.className = 'hint-toggle';
+    hintButton.textContent = `ⓘ ${t('hintButton')}`;
+    hintButton.addEventListener('click', () => openHintModal(ex));
+
+    const focus = document.createElement('span');
+    focus.className = 'exercise-focus';
+    focus.textContent = ex.focus[lang()];
+    if (isSkipped(goal, ex)) focus.textContent = `${ex.focus[lang()]} · ${t('skippedTag')}`;
+
+    const dose = document.createElement('span');
+    dose.className = 'exercise-detail';
+    dose.textContent = formatDose(ex);
+
+    const setsRow = document.createElement('div');
+    setsRow.className = 'sets-row';
+    for (let i = 0; i < total; i++) {
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = `set-chip${i < done ? ' done' : ''}`;
+        chip.textContent = String(i + 1);
+        chip.setAttribute('aria-pressed', String(i < done));
+        chip.setAttribute('aria-label', `${t('setLabel')} ${i + 1} ${t('of')} ${total}: ${ex.name[lang()]}`);
+        chip.addEventListener('click', () => tapSet(goal, ex, i));
+        setsRow.append(chip);
+    }
+    if (ex.work.unit === 'sec') {
+        const start = document.createElement('button');
+        start.type = 'button';
+        start.className = 'timer-start';
+        start.dataset.exId = ex.id;
+        start.textContent = `▶ ${setAmount(ex)} ${t('secShort')}`;
+        start.disabled = isDone;
+        start.setAttribute('aria-label', `${t('startTimer')}: ${ex.name[lang()]}`);
+        start.addEventListener('click', () => startWorkTimer(goal, ex));
+        setsRow.append(start);
+    }
+
+    if (ex.hard) {
+        const badge = document.createElement('span');
+        badge.className = 'hard-badge';
+        badge.textContent = t('hardBadge');
+        badge.title = t('hardHint');
+        const nameWrap = document.createElement('span');
+        nameWrap.className = 'exercise-name-wrap';
+        nameWrap.append(name, badge);
+        titleRow.append(nameWrap, hintButton);
+    } else {
+        titleRow.append(name, hintButton);
+    }
+    main.append(titleRow, dose, focus, setsRow);
+
+    const check = document.createElement('button');
+    check.type = 'button';
+    check.className = `check-button${isDone ? ' checked' : ''}`;
+    check.setAttribute('aria-label', `${isDone ? '✓ ' : ''}${ex.name[lang()]}`);
+    check.setAttribute('aria-pressed', String(isDone));
+    check.textContent = isDone ? '✓' : '';
+    check.addEventListener('click', () => toggleExercise(ex));
+
+    li.append(number, main, check);
+    return li;
+}
+
+function refreshItem(goal, ex) {
+    if (goal !== state.selectedGoal) return;
+    const old = document.querySelector(`.workout-item[data-ex-id="${ex.id}"]`);
+    if (!old) return;
+    const index = programs[goal].exercises.indexOf(ex);
+    old.replaceWith(buildItem(goal, ex, index, false));
+    renderTimerButtons();
 }
 
 function renderWorkout() {
     const token = ++renderToken;
-    const program = programs[state.selectedGoal];
+    const goal = state.selectedGoal;
+    const program = programs[goal];
     const list = $('workout-list');
     $('workout-title').textContent = program.title[lang()];
     list.innerHTML = '';
+    updateLevelNote();
 
     if (!program.exercises.length) {
         const li = document.createElement('li');
         li.className = 'empty-state';
         li.textContent = t('catalogError');
         list.append(li);
-        $('exercises-count').textContent = `0 ${t('exercises')}`;
+        $('exercises-count').textContent = exercisesCountText(0);
         updateWorkoutProgress();
         updateStats();
         updateTip();
         return;
     }
 
-    program.exercises.forEach((ex, index) => {
-        const done = state.daily.checks[state.selectedGoal].includes(ex.id);
-        const li = document.createElement('li');
-        li.className = `workout-item${done ? ' done' : ''}`;
-        li.dataset.exId = ex.id;
-        li.style.setProperty('--item-delay', `${index * 60}ms`);
-
-        const number = document.createElement('span');
-        number.className = 'exercise-number';
-        number.textContent = ex.icon;
-
-        const main = document.createElement('div');
-        main.className = 'exercise-main';
-
-        const titleRow = document.createElement('div');
-        titleRow.className = 'exercise-title-row';
-
-        const name = document.createElement('span');
-        name.className = 'exercise-name';
-        name.textContent = ex.name[lang()];
-
-        const hintButton = document.createElement('button');
-        hintButton.type = 'button';
-        hintButton.className = 'hint-toggle';
-        hintButton.textContent = `ⓘ ${t('hintButton')}`;
-        hintButton.addEventListener('click', () => openHintModal(ex));
-
-        const dose = document.createElement('span');
-        dose.className = 'exercise-detail';
-        dose.textContent = ex.dose[lang()];
-
-        titleRow.append(name, hintButton);
-        main.append(titleRow, dose);
-
-        const check = document.createElement('button');
-        check.type = 'button';
-        check.className = `check-button${done ? ' checked' : ''}`;
-        check.setAttribute('aria-label', `${done ? '✓ ' : ''}${ex.name[lang()]}`);
-        check.setAttribute('aria-pressed', String(done));
-        check.textContent = done ? '✓' : '';
-        check.addEventListener('click', () => toggleExercise(ex.id));
-
-        li.append(number, main, check);
-        list.append(li);
-    });
+    recalcProgram(goal);
+    program.exercises.forEach((ex, index) => list.append(buildItem(goal, ex, index, true)));
 
     if (token !== renderToken) return;
-    $('exercises-count').textContent = `${program.exercises.length} ${t('exercises')}`;
+    $('exercises-count').textContent = exercisesCountText(program.exercises.length);
     updateWorkoutProgress();
     updateStats();
     updateTip();
+    renderTimerButtons();
 }
 
-function toggleExercise(id) {
-    const key = state.selectedGoal,
-        checks = state.daily.checks[key];
-    const wasComplete = checks.length === programs[key].exercises.length;
+function exercisesCountText(n) {
+    const word = lang() === 'ru' ? plural(n, ['упражнение', 'упражнения', 'упражнений']) : plural(n, ['exercise', 'exercises']);
+    return `${n} ${word}`;
+}
 
-    const wasChecked = checks.includes(id);
-    state.daily.checks[key] = wasChecked ? checks.filter(x => x !== id) : [...checks, id];
-
-    const complete = state.daily.checks[key].length === programs[key].exercises.length;
-    if (complete && !state.daily.completedPrograms.includes(key)) state.daily.completedPrograms.push(key);
-    if (!complete) state.daily.completedPrograms = state.daily.completedPrograms.filter(x => x !== key);
-
-    saveState();
-
-    const li = document.querySelector(`.workout-item[data-ex-id="${id}"]`);
-    if (li) {
-        const nowChecked = !wasChecked;
-        li.classList.toggle('done', nowChecked);
-        const btn = li.querySelector('.check-button');
-        if (btn) {
-            btn.classList.toggle('checked', nowChecked);
-            btn.setAttribute('aria-pressed', String(nowChecked));
-            btn.textContent = nowChecked ? '✓' : '';
-        }
-    }
-
-    updateWorkoutProgress();
-    updateStats();
-
-    if (complete && !wasComplete && !state.daily.celebrated.workouts[key]) {
-        state.daily.celebrated.workouts[key] = true;
-        workoutCelebrated = true;
-        saveState();
-        showToast('🎉', t('allDoneTitle'), t('allDoneText'));
-    }
-    if (!complete) workoutCelebrated = false;
+function updateLevelNote() {
+    const el = $('level-note');
+    if (!el) return;
+    const goal = state.selectedGoal;
+    el.textContent = `${t('level' + level()[0].toUpperCase() + level().slice(1))} · ${t('restBetween')}`;
 }
 
 function updateWorkoutProgress() {
-    const total = programs[state.selectedGoal].exercises.length;
-    const done = state.daily.checks[state.selectedGoal].length;
-    $('completed-count').textContent = `${done} ${t('of')} ${total}`;
-    $('workout-progress').style.width = `${total ? done/total*100 : 0}%`;
-    $('workout-progress').parentElement.setAttribute('aria-valuenow', String(done));
+    const p = programProgress(state.selectedGoal);
+    $('completed-count').textContent = `${p.exDone} ${t('of')} ${p.exTotal}`;
+    $('workout-progress').style.width = `${p.total ? p.done / p.total * 100 : 0}%`;
+    $('workout-progress').parentElement.setAttribute('aria-valuenow', String(p.done));
+}
+
+// первичная синхронизация отметок и подходов (после объявления всех хелперов выше)
+for (const key of Object.keys(programs)) {
+    // старые отметки без подходов (до появления уровней) считаются полностью выполненными
+    for (const id of state.daily.checks[key]) {
+        if (state.daily.sets[key][id] === undefined) state.daily.sets[key][id] = 99;
+    }
+    recalcProgram(key);
 }
 
 function updateTip() {
@@ -823,9 +1410,8 @@ function updateStats(silent = false) {
     });
     if (state.daily.date.startsWith(month)) completedThisMonth += state.daily.completedPrograms.length;
 
-    const total = programs[state.selectedGoal].exercises.length;
-    const done = state.daily.checks[state.selectedGoal].length;
-    const progressText = total ? `${Math.round(done/total*100)}%` : '0%';
+    const progress = programProgress(state.selectedGoal);
+    const progressText = progress.total ? `${Math.round(progress.done / progress.total * 100)}%` : '0%';
     const workoutsText = formatNumber(completedThisMonth);
     const waterText = `${formatNumber(state.daily.water)} ${t('waterMl')}`;
     const streakText = `${formatNumber(calculateStreak())} ${t('streakDays')}`;
@@ -872,10 +1458,7 @@ function rolloverDay() {
     if (state.daily.date === today) return;
 
     const previous = state.daily;
-    const previousExercises = {};
-    for (const goal of Object.keys(programs)) {
-        previousExercises[goal] = programs[goal].exercises.map(e => e.id);
-    }
+    const previousExercises = previous.picked || {};
 
     state.history[previous.date] = {
         water: previous.water,
@@ -886,6 +1469,13 @@ function rolloverDay() {
     state.daily = {
         date: today,
         water: 0,
+        picked: {},
+        skipped: { back: [], cardio: [], strength: [] },
+        sets: {
+            back: {},
+            cardio: {},
+            strength: {}
+        },
         checks: {
             back: [],
             cardio: [],
@@ -912,8 +1502,9 @@ function rolloverDay() {
 
 function resetWorkout() {
     showConfirm(t('confirmReset'), () => {
-        state.daily.checks[state.selectedGoal] = [];
-        state.daily.completedPrograms = state.daily.completedPrograms.filter(x => x !== state.selectedGoal);
+        if (timer) stopTimer();
+        state.daily.sets[state.selectedGoal] = {};
+        recalcProgram(state.selectedGoal);
         if (state.daily.celebrated?.workouts) state.daily.celebrated.workouts[state.selectedGoal] = false;
         workoutCelebrated = false;
         saveState();
@@ -936,9 +1527,12 @@ function clearAllData() {
             'stat-progress': null,
             'stat-streak': null
         };
+        if (timer) stopTimer();
+        refreshDailyExercises(state.daily.date);
         saveState();
         applyTranslations();
         showToast('✓', t('dataCleared'), '');
+        openLevelModal();
     }, {
         title: t('clearData')
     });
@@ -968,13 +1562,32 @@ function showToast(icon, title, message) {
     }, 4000);
 }
 
-function updateConnectionStatus() {
-    const online = navigator.onLine;
-    const el = $('connection-status');
-    el.classList.toggle('offline', !online);
-    el.lastElementChild.textContent = online ? t('online') : t('offline');
-}
-
+$('theme-toggle').addEventListener('click', () => {
+    state.theme = isDark() ? 'light' : 'dark';
+    saveState();
+    applyTheme();
+});
+window.matchMedia?.('(prefers-color-scheme: dark)').addEventListener?.('change', () => {
+    if (!state.theme) applyTheme();
+});
+$('level-select').addEventListener('change', e => setLevel(e.target.value));
+$('reminder-toggle').addEventListener('click', () => setReminderEnabled(!state.reminder.enabled));
+$('reminder-interval').addEventListener('change', e => {
+    state.reminder.minutes = Number(e.target.value);
+    if (state.reminder.enabled) scheduleNextReminder();
+    else saveState();
+});
+$('reminder-test').addEventListener('click', async () => {
+    if ('Notification' in window && Notification.permission === 'default') {
+        try { await Notification.requestPermission(); } catch (e) { /* ignore */ }
+        updateReminderUI();
+    }
+    sendBreakNotification();
+});
+setInterval(checkReminder, 15000);
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') checkReminder();
+});
 $('language-select').addEventListener('change', e => {
     state.language = e.target.value === 'en' ? 'en' : 'ru';
     saveState();
@@ -986,8 +1599,6 @@ $('undo-water').addEventListener('click', undoWater);
 $('reset-water').addEventListener('click', resetWater);
 $('reset-workout').addEventListener('click', resetWorkout);
 $('clear-data').addEventListener('click', clearAllData);
-window.addEventListener('online', updateConnectionStatus);
-window.addEventListener('offline', updateConnectionStatus);
 
 function checkDayRollover() {
     if (state.daily.date !== localDateKey()) {
@@ -1007,6 +1618,7 @@ setInterval(checkDayRollover, 60 * 1000);
     applyBrand();
     $('year').textContent = new Date().getFullYear();
     applyTranslations();
+    if (!state.level) openLevelModal();
 })();
 
 if ('serviceWorker' in navigator && location.protocol !== 'file:') {

@@ -10,6 +10,16 @@
   <title>FITСтудент — твой фитнес-помощник</title>
   <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
   <link rel="manifest" href="manifest.json">
+  <script>
+    // применяем тему до отрисовки, чтобы не было вспышки
+    (function () {
+      try {
+        var saved = JSON.parse(localStorage.getItem('fitstudent-v2') || '{}').theme;
+        var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (dark) document.documentElement.setAttribute('data-theme', 'dark');
+      } catch (e) {}
+    })();
+  </script>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -27,8 +37,15 @@
         </span>
       </a>
       <div class="header-actions">
-        <span id="connection-status" class="connection-status"><span class="status-dot"></span><span
-            data-i18n="online">Готов к работе</span></span>
+        <label class="language-label" for="level-select" data-i18n="levelLabel">Уровень</label>
+        <select id="level-select" aria-label="Level">
+          <option value="beginner">Начинающий</option>
+          <option value="intermediate">Средний</option>
+          <option value="advanced">Продвинутый</option>
+        </select>
+        <button type="button" class="theme-toggle" id="theme-toggle" role="switch" aria-checked="false"
+          aria-label="Тёмная тема"><span class="theme-icon sun" aria-hidden="true">☀</span><span class="theme-knob"
+            aria-hidden="true"></span><span class="theme-icon moon" aria-hidden="true">☾</span></button>
         <label class="language-label" for="language-select" data-i18n="language">Язык</label>
         <select id="language-select" aria-label="Language">
           <option value="ru">RU</option>
@@ -111,7 +128,8 @@
                 class="meta-divider">·</span><span id="completed-count">0 из 4</span></div>
           </div>
           <p class="daily-selection-note" data-i18n="dailySelectionNote">Каждый день выбираются 4 упражнения из
-            каталога. Завтра набор обновится.</p>
+            этой программы. Завтра набор обновится.</p>
+          <p class="level-note" id="level-note"></p>
           <div class="progress-track" aria-label="Workout progress">
             <div id="workout-progress" class="progress-bar"></div>
           </div>
@@ -175,6 +193,32 @@
                 class="text-button" data-i18n="resetWater">Сбросить</button></div>
           </section>
 
+          <section class="reminder-box" id="reminder-box">
+            <div class="reminder-head">
+              <div>
+                <p class="eyebrow" data-i18n="reminderEyebrow">ПЕРЕРЫВ</p>
+                <h3 data-i18n="reminderTitle">Напоминание о разминке</h3>
+              </div>
+              <button type="button" class="theme-toggle reminder-switch" id="reminder-toggle" role="switch"
+                aria-checked="false" aria-label="Напоминание о разминке"><span class="theme-knob"
+                  aria-hidden="true"></span></button>
+            </div>
+            <p class="reminder-text" data-i18n="reminderText">Раз в выбранное время напомню встать, размяться и
+              выпить воды. Работает для любой программы.</p>
+            <div class="reminder-controls" id="reminder-controls">
+              <label for="reminder-interval" data-i18n="reminderEvery">Напоминать каждые</label>
+              <select id="reminder-interval" aria-label="Интервал">
+                <option value="30">30</option>
+                <option value="45">45</option>
+                <option value="60">60</option>
+                <option value="90">90</option>
+              </select>
+              <span data-i18n="minutesShort">мин</span>
+              <button type="button" class="text-button" id="reminder-test" data-i18n="reminderTest">Показать пример</button>
+            </div>
+            <p class="reminder-status" id="reminder-status" aria-live="polite"></p>
+          </section>
+
           <section class="advice-box">
             <div class="advice-icon" aria-hidden="true">✦</div>
             <p class="eyebrow" data-i18n="tipEyebrow">НЕБОЛЬШОЙ СОВЕТ</p>
@@ -185,12 +229,6 @@
               заменяют рекомендации специалиста.</p>
           </section>
 
-          <section class="privacy-note"><span aria-hidden="true">🔒</span>
-            <div><strong data-i18n="privacyTitle">Твои данные — твои</strong>
-              <p data-i18n="privacyCopy">Всё хранится локально в браузере. Аккаунт не нужен. Очистка данных браузера
-                может удалить прогресс.</p>
-            </div>
-          </section>
         </aside>
       </div>
       <footer class="footer"><span>FITСтудент © <span id="year"></span></span><button type="button" class="text-button"
@@ -200,7 +238,6 @@
   <div id="toast-container" class="toast-container" role="status" aria-live="polite"></div>
   <script src="brand-config.js" defer></script>
   <script src="exercise-bank.js" defer></script>
-  <script src="exercise-illustrations.js" defer></script>
   <script src="script.js" defer></script>
 </body>
 
